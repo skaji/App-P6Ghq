@@ -14,6 +14,8 @@ method run(Str $module, Str :$protocol?) {
 method get(Str $module, Str :$protocol?) {
     note "==> Searching $module by zef...";
     my $zef = run $!zef, "info", $module, :out, :err;
+    LEAVE $zef.out.close;
+    LEAVE $zef.err.close;
     if $zef.exitcode != 0 {
         # XXX
         # my $err = $zef.err.slurp.chomp;
