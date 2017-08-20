@@ -5,8 +5,8 @@ has $.ghq = "ghq";
 has $.zef = "zef";
 
 method run(Str $module, Str :$protocol?) {
-    die "Couldn't find zef" if 0 != run $!zef, "--help", :out, :err;
-    die "Couldn't find ghq" if 0 != run $!ghq, "--version", :out, :err;
+    die "Couldn't find zef" if 0 != run $!zef, "--help", :!out, :!err;
+    die "Couldn't find ghq" if 0 != run $!ghq, "--version", :!out, :!err;
     my $ok = self.get($module, :$protocol);
     return $ok ?? 0 !! 1;
 }
