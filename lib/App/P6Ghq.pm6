@@ -24,7 +24,7 @@ method get(Str $module, Str :$protocol?) {
         return;
     }
 
-    my @url = do gather for $zef.out.lines -> $line {
+    my @url = gather for $zef.out.lines -> $line {
         if $line ~~ /^ 'Source-url:' \s+ (\S+) / {
             take $/[0].Str;
         } elsif $line ~~ /^ '#' \s+ 'source:' \s+ (\S+) / {
